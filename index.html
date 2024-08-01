@@ -2,60 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Animals Dancing</title>
-    <meta name="description" content="Animals Dancing">
+    <title>Geometric Pieces Animation</title>
+    <meta name="description" content="Geometric Pieces Animation">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r122/examples/js/loaders/GLTFLoader.js"></script>
-    <script>
-      AFRAME.registerComponent('dancing-animal', {
-        schema: {type: 'string'},
-
-        init: function () {
-          const el = this.el;
-          const animalModelUrl = this.data;
-          
-          // Load the GLTF model
-          const loader = new THREE.GLTFLoader();
-          loader.load(animalModelUrl, function (gltf) {
-            el.setObject3D('mesh', gltf.scene);
-          });
-
-          // Apply animation to the model
-          el.setAttribute('animation', {
-            property: 'rotation',
-            to: '0 360 0',
-            loop: true,
-            dur: 2000,
-            easing: 'linear'
-          });
-        }
-      });
-    </script>
   </head>
   <body>
     <a-scene>
-      <!-- Animal models (Replace the URLs with actual animal models in GLTF format) -->
-      <a-entity dancing-animal="url(/path/to/animal1.gltf)" position="-1 0 -3"></a-entity>
-      <a-entity dancing-animal="url(/path/to/animal2.gltf)" position="0 0 -3"></a-entity>
-      <a-entity dancing-animal="url(/path/to/animal3.gltf)" position="1 0 -3"></a-entity>
+      <!-- Box -->
+      <a-box position="0 1 -5" color="red" animation__move="property: position; to: 0 1 -1; dir: alternate; dur: 2000; loop: true"></a-box>
+      <!-- Sphere -->
+      <a-sphere position="2 1 -5" radius="1" color="green" animation__move="property: position; to: 2 1 -1; dir: alternate; dur: 2000; loop: true"></a-sphere>
+      <!-- Cylinder -->
+      <a-cylinder position="-2 1 -5" radius="0.5" height="1.5" color="blue" animation__move="property: position; to: -2 1 -1; dir: alternate; dur: 2000; loop: true"></a-cylinder>
+      <!-- Plane -->
+      <a-plane position="0 0 -5" rotation="-90 0 0" width="4" height="4" color="yellow" animation__move="property: position; to: 0 0 -1; dir: alternate; dur: 2000; loop: true"></a-plane>
 
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
 </html>
-En este código:
-
-Se utiliza el componente personalizado dancing-animal para cargar modelos GLTF de animales y aplicarles una animación de rotación continua.
-Necesitarás proporcionar las URL correctas para los modelos 3D de los animales en formato GLTF.
-Asegúrate de tener los modelos GLTF disponibles y de reemplazar las rutas /path/to/animal1.gltf, /path/to/animal2.gltf, y /path/to/animal3.gltf con las rutas correctas de tus modelos 3D de animales.
-
-
-
-
-
-
-¿Esta conversación te resultó útil hasta ahora?
-
 
 
 
