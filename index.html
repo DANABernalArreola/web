@@ -2,27 +2,58 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Geometric Pieces Animation</title>
-    <meta name="description" content="Geometric Pieces Animation">
+    <title>Geometric Pieces Interaction and Throwing</title>
+    <meta name="description" content="Geometric Pieces Interaction and Throwing">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@3.3.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/super-hands@4.0.0/dist/super-hands.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene physics="gravity: 0 -9.8 0">
+
       <!-- Box -->
-      <a-box position="0 1 -5" color="red" animation__move="property: position; to: 0 1 -1; dir: alternate; dur: 2000; loop: true"></a-box>
+      <a-box position="0 1 -5" color="red" 
+             dynamic-body
+             grabbable
+             droppable
+             stretchable
+             draggable
+             throwable></a-box>
+
       <!-- Sphere -->
-      <a-sphere position="2 1 -5" radius="1" color="green" animation__move="property: position; to: 2 1 -1; dir: alternate; dur: 2000; loop: true"></a-sphere>
+      <a-sphere position="2 1 -5" radius="1" color="green" 
+                dynamic-body
+                grabbable
+                droppable
+                stretchable
+                draggable
+                throwable></a-sphere>
+
       <!-- Cylinder -->
-      <a-cylinder position="-2 1 -5" radius="0.5" height="1.5" color="blue" animation__move="property: position; to: -2 1 -1; dir: alternate; dur: 2000; loop: true"></a-cylinder>
+      <a-cylinder position="-2 1 -5" radius="0.5" height="1.5" color="blue" 
+                  dynamic-body
+                  grabbable
+                  droppable
+                  stretchable
+                  draggable
+                  throwable></a-cylinder>
+
       <!-- Plane -->
-      <a-plane position="0 0 -5" rotation="-90 0 0" width="4" height="4" color="yellow" animation__move="property: position; to: 0 0 -1; dir: alternate; dur: 2000; loop: true"></a-plane>
+      <a-plane position="0 0 -5" rotation="-90 0 0" width="4" height="4" color="yellow" 
+               static-body></a-plane>
 
       <a-sky color="#ECECEC"></a-sky>
+
+      <!-- Camera and cursor -->
+      <a-entity camera position="0 1.6 0">
+        <a-entity cursor="fuse: false; rayOrigin: mouse" raycaster="objects: .grabbable">
+          <!-- Hand controls for grabbing and throwing -->
+          <a-entity super-hands hand-controls="left"></a-entity>
+          <a-entity super-hands hand-controls="right"></a-entity>
+        </a-entity>
+      </a-entity>
     </a-scene>
   </body>
 </html>
-
-
-
 
 
